@@ -32,7 +32,7 @@ const getTileIndex = (url, callback) => {
   );
 };
 
-class RoadWorksSource {
+class RoadworksSource {
   constructor(uri, callback) {
     getTileIndex(url, (err, tileIndex) => {
       if (err) {
@@ -51,7 +51,7 @@ class RoadWorksSource {
       tile = { features: [] };
     }
 
-    const data = Buffer.from(vtPbf.fromGeojsonVt({ parking: tile }));
+    const data = Buffer.from(vtPbf.fromGeojsonVt({ roadwork: tile }));
 
     zlib.gzip(data, function(err, buffer) {
       if (err) {
@@ -69,16 +69,16 @@ class RoadWorksSource {
       maxzoom: maxZoom,
       vector_layers: [
         {
-          description: "Construction site information for Baden-Württemberg",
-          id: "parking"
+          description: "Roadwork information for Baden-Württemberg",
+          id: "roadwork"
         }
       ]
     });
   }
 }
 
-module.exports = RoadWorksSource;
+module.exports = RoadworksSource;
 
 module.exports.registerProtocols = tilelive => {
-  tilelive.protocols["hbparking:"] = RoadWorksSource;
+  tilelive.protocols["roadworkbw:"] = RoadworksSource;
 };
