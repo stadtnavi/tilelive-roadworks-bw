@@ -80,5 +80,5 @@ class RoadworksSource {
 module.exports = RoadworksSource;
 
 module.exports.registerProtocols = tilelive => {
-  tilelive.protocols["roadworkbw:"] = RoadworksSource;
+  tilelive.protocols["roadworksbw:"] = RoadworksSource;
 };
