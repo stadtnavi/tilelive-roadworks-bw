@@ -24,12 +24,24 @@ const getTileIndex = (url, callback) => {
       }
 
       const json = JSON.parse(body);
-      // the API adds the field "crs" with in ancient history was part of the GeoJSON standard.
+      // the API adds the field "crs" which in ancient history was part of the GeoJSON standard.
       // it causes an error in the parser though, so we remove it.
       delete json.crs;
+      const edited = editGeoJson(json);
       callback(null, geojsonVt(json, { maxZoom: maxZoom }));
     }
   );
+};
+
+const editGeoJson = (json) => {
+  json.features.forEach( feature => {
+    if(feature.geometry && feature.geometry.type === "LineString"){
+      // each linestring has a property called "dargestellt_von_Punkt" (yes, it's really called like that)
+      // which contains the starting (?) point of the roadworks
+      const point = feature.properties.dargestellt_von_Punkt;
+      feature.geometry = point;
+    }
+  });
 };
 
 class RoadworksSource {
