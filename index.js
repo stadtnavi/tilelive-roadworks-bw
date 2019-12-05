@@ -82,7 +82,7 @@ class RoadworksSource {
       vector_layers: [
         {
           description: "Roadwork information for Baden-Württemberg",
-          id: "roadwork"
+          id: "roadworks"
         }
       ]
     });
