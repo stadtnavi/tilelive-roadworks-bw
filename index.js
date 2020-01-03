@@ -4,7 +4,7 @@ const vtPbf     = require("vt-pbf");
 const request   = require("requestretry");
 const zlib      = require("zlib");
 
-const url     = "https://baustellen.strassen.baden-wuerttemberg.de/bis_wfs/wfs?VERSION=1.0.0&typeName=bis:Baustelle&request=GetFeature&outputFormat=json";
+const url     = process.env.ROADWORKS_API_URL || "https://baustellen.strassen.baden-wuerttemberg.de/bis_wfs/wfs?VERSION=1.0.0&typeName=bis:Baustelle&request=GetFeature&outputFormat=json";
 const maxZoom = parseInt(process.env.MAX_ZOOM) || 20;
 
 const getTileIndex = (url, callback) => {
