@@ -63,7 +63,7 @@ class RoadworksSource {
       tile = { features: [] };
     }
 
-    const data = Buffer.from(vtPbf.fromGeojsonVt({ roadwork: tile }));
+    const data = Buffer.from(vtPbf.fromGeojsonVt({ roadworks: tile }));
 
     zlib.gzip(data, function(err, buffer) {
       if (err) {
