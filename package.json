@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "geojson-vt": "^2.1.8",
-    "requestretry": "^1.6.0",
+    "requestretry": "^7.0.0",
     "vt-pbf": "^2.0.2"
   },
   "devDependencies": {
